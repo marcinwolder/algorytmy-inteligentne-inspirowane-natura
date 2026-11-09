@@ -1,0 +1,7 @@
+# The most valuable coffee shop of the instance is closed in the morning.
+name: closure
+day_type: weekday
+events:
+  - type: closure
+    venue: "@top:Coffee Shop"
+    window: ["08:00", "12:00"]

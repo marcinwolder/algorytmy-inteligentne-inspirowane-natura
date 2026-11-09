@@ -1,0 +1,75 @@
+# AntRoute - default parameters (docs/04-algorytm.md 4.7, docs/02-dane.md 2.3, docs/11-zakres-prac-v1.md 11.4)
+
+paths:
+  raw_checkins: data/raw/dataset_TSMC2014_NYC.txt
+  manhattan_polygon: data/raw/manhattan.geojson
+  interim: data/interim
+  processed: data/processed
+
+data:
+  categories:            # category -> stay time s_i [min] (docs 2.2)
+    Breakfast Spot: 45
+    Coffee Shop: 20
+    Bakery: 15
+    Museum: 90
+    Art Museum: 120
+    Park: 45
+    Clothing Store: 30
+    American Restaurant: 75
+    Movie Theater: 150
+    Mexican Restaurant: 60
+    Bar: 60
+  smoothing_window_h: 3
+  closed_threshold: 0.05          # P_c(t) < 0.05 -> closed
+  min_venue_checkins: 10
+  profile_min_checkins: 100       # D5: fallback below this count per (category, day type)
+  profile_fallback_groups:        # D5: merged profile for small categories
+    Museum: [Museum, Art Museum]
+    Art Museum: [Museum, Art Museum]
+  profile_anchor_minute: 30       # D2: P_c(h) belongs to h:30
+  walk_speed_kmh: 5.0
+  street_factor: 1.3
+
+instance:
+  selection: stratified           # D6
+  min_per_category: 1
+  seed: 0
+  max_per_category: {American Restaurant: 2, Mexican Restaurant: 2}   # K_c, others default_k
+  default_k: 1
+
+model:
+  lam: 0.8                        # lambda, crowd penalty
+  bin_minutes: 30                 # antipheromone time bins
+  horizon_minutes: 2880           # 48 h (start up to 20:00 + 12 h budget)
+
+aco:
+  m: 10
+  beta: 2.0
+  q0: 0.9
+  rho: 0.1
+  psi: 0.1
+  tau0_mode: profit_over_n        # D1: tau0 = Profit_greedy / N ; "doc" = 1 / (N * Profit_greedy)
+  gamma: 1.0
+  phi_event_types: [crowd_surge, closure, traffic]   # docs 4.4 = [crowd_surge] only
+  phi_max: 5.0
+  dphi: 0.5
+  rho_phi: 0.1
+  theta: 0.7
+  kappa: 0.3
+  iterations: 2000                # docs: 500 or 60 s; 2000 runs in < 1 s and avoids early stagnation (E10 check)
+  time_limit_s: 60
+  replan_iterations: 50
+  time_bins_tau: 1                # 1 = ACS-A, 8 = ACS-B (3 h bins)
+  local_search: false             # D9
+
+personas:                         # u_c (docs 8.1)
+  balanced: {Breakfast Spot: 1.0, Coffee Shop: 1.0, Bakery: 1.0, Museum: 1.0, Art Museum: 1.0, Movie Theater: 1.0, Park: 1.0, Clothing Store: 1.0, American Restaurant: 1.0, Mexican Restaurant: 1.0, Bar: 1.0}
+  culture:  {Breakfast Spot: 0.6, Coffee Shop: 0.6, Bakery: 0.6, Museum: 1.0, Art Museum: 1.0, Movie Theater: 1.0, Park: 0.8, Clothing Store: 0.2, American Restaurant: 0.6, Mexican Restaurant: 0.6, Bar: 0.2}
+  foodie:   {Breakfast Spot: 1.0, Coffee Shop: 1.0, Bakery: 1.0, Museum: 0.3, Art Museum: 0.3, Movie Theater: 0.3, Park: 0.4, Clothing Store: 0.2, American Restaurant: 1.0, Mexican Restaurant: 1.0, Bar: 0.6}
+  night_owl: {Breakfast Spot: 0.4, Coffee Shop: 0.4, Bakery: 0.4, Museum: 0.4, Art Museum: 0.4, Movie Theater: 0.4, Park: 0.3, Clothing Store: 0.3, American Restaurant: 0.7, Mexican Restaurant: 0.7, Bar: 1.0}
+
+start_points:
+  times_square: [40.7580, -73.9855]
+  union_square: [40.7359, -73.9911]
+  wall_street: [40.7074, -74.0104]
+  met_museum: [40.7794, -73.9632]

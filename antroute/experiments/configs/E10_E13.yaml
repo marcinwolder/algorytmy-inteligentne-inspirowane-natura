@@ -1,0 +1,40 @@
+# E10-E13 - events (docs 5, 8.3). E13 = acs_ls vs acs_ls+nophi on all of them.
+# "fixed" = the no-event plan (acs_ls, same seed) followed blindly - shows the value of reacting.
+common: {n: 50, start_point: times_square, budget: 480, persona: culture, day_type: weekday,
+         seeds: 30}
+E10:
+  t0: ["08:00", "10:00"]
+  window: ["10:00", "13:00"]
+  strength: 1.0
+  decay_min: [30, 60, 180]
+  methods: [acs_ls, acs_ls+nophi, greedy, fixed]
+E11:
+  t0: "08:00"
+  window: ["10:00", "13:00"]
+  announced: "11:00"
+  strength: 1.0
+  decay_min: 60
+  methods: [acs_ls, acs_ls+nophi, acs_a, greedy, fixed]
+E13b:
+  # Fast replanning after an event announced during the trip (user scenario: start 09:00,
+  # accident at 10:23). The event hits the first walk / venue of the no-event plan after 10:23.
+  n: 100
+  t0: "09:00"
+  announced: "10:23"
+  window: ["10:23", "15:00"]
+  accident: {radius_m: 250, factor: 50.0}
+  surge: {strength: 1.0, decay_min: 60}
+  replan_iterations: [10, 50]
+  warm: [true, false]
+  methods:
+    acs_a_g0: {variant: acs_a, override: {gamma: 0.0}}
+    acs_a_g1: {variant: acs_a, override: {gamma: 1.0}}
+    acs_a_g3: {variant: acs_a, override: {gamma: 3.0}}
+    acs_a_g1_phidoc: {variant: acs_a+phidoc, override: {gamma: 1.0}}
+    acs_ls_g0: {variant: acs_ls, override: {gamma: 0.0}}
+    acs_ls_g1: {variant: acs_ls, override: {gamma: 1.0}}
+E12:
+  t0: "08:00"
+  closure_window: ["08:00", "12:00"]
+  parade: {center: [40.7580, -73.9855], radius_m: 400, window: ["12:00", "15:00"], factor: 2.0}
+  methods: [acs_ls, acs_ls+nophi, greedy, fixed]

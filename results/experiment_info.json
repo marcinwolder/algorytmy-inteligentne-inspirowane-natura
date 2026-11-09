@@ -1,0 +1,27 @@
+{
+ "code_version": "73b4040-dirty",
+ "E10_target": {
+  "08:00": {
+   "venue": "4a0203cef964a52024711fe3",
+   "planned_arrival": "10:04"
+  },
+  "10:00": {
+   "venue": "4adcdc95f964a520046221e3",
+   "planned_arrival": "10:04"
+  }
+ },
+ "E11_target": {
+  "venue": "4a5e9b4af964a520e4be1fe3",
+  "planned_arrival": "11:56"
+ },
+ "E12_closed_venue": "45ab7c7af964a52044411fe3",
+ "E13b_target": {
+  "walk_from": "4396cca9f964a520952b1fe3",
+  "venue": "4b240a1ff964a520b25f24e3",
+  "planned_departure": "11:30",
+  "center": [
+   40.74235825700941,
+   -74.00230847632307
+  ]
+ }
+}

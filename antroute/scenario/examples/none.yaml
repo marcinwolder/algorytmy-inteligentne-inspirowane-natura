@@ -1,0 +1,4 @@
+# No events: an ordinary day (only the crowd profiles from the data).
+name: none
+day_type: weekday
+events: []

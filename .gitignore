@@ -1,1 +1,13 @@
-.claude/worktrees
+.claude/worktrees.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.coverage
+data/raw/
+data/interim/
+data/processed/
+runs/
+results/*/histories.jsonl
+.venv
+.DS_Store

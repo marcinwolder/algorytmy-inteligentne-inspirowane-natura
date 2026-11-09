@@ -1,0 +1,19 @@
+# E4 - parameter sensitivity (ACS-A) + design decisions D1 and D9
+exp: E4
+instances:
+  - {n: 50, start_point: times_square, t0: "08:00", budget: 480}
+  - {n: 50, start_point: times_square, t0: "12:00", budget: 480}
+  - {n: 50, start_point: union_square, t0: "08:00", budget: 480}
+  - {n: 50, start_point: union_square, t0: "12:00", budget: 480}
+persona: culture
+day_type: weekday
+seeds: 30
+grid:            # full factorial on acs_a
+  beta: [1.0, 2.0, 5.0]
+  q0: [0.5, 0.7, 0.9, 0.98]
+  m: [5, 10, 20]
+  lam: [0.4, 0.8, 1.0]
+design:          # full factorial on acs_a, defaults elsewhere
+  tau0_mode: [profit_over_n, doc]
+  local_search: [false, true]
+  q0: [0.5, 0.9]

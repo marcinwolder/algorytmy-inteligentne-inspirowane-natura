@@ -1,0 +1,10 @@
+# Free entry to the most valuable art museum of the instance, known in the morning (docs 5.3).
+# "@top:<Category>" = the venue with the highest w_i of that category in the instance.
+name: free_museum_morning
+day_type: weekday
+events:
+  - type: crowd_surge
+    venue: "@top:Art Museum"
+    window: ["10:00", "13:00"]
+    strength: 1.0
+    decay_min: 60
