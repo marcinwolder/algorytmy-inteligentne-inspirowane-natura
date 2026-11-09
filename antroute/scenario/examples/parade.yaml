@@ -1,0 +1,9 @@
+# A parade near Times Square: walking edges through the circle take 2x longer.
+name: parade
+day_type: weekday
+events:
+  - type: traffic
+    center: [40.7536, -73.9832]
+    radius_m: 400
+    window: ["12:00", "15:00"]
+    factor: 2.0

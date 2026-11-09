@@ -51,9 +51,13 @@ Feromon τ_ij jest na krawędziach i przyciąga mrówki. Antyferomon φ_j(b) jes
 | Źródło | Kiedy | Wartość |
 | --- | --- | --- |
 | Zdarzenie „skok tłoku” | w każdej iteracji, dopóki zdarzenie trwa | φ_j^E(b) = φ_max · E_j(b) |
+| Zdarzenie „zamknięcie” | przedziały b, które przecinają okno zamknięcia | φ_j^E(b) = φ_max dla zamkniętego miejsca |
+| Zdarzenie „utrudnienie w ruchu” (np. wypadek) | przedziały b, które przecinają okno utrudnienia | φ_j^E(b) = φ_max · (1 − 1/m) dla miejsc w obszarze; m = mnożnik czasu przejścia |
 | Mrówki | gdy mrówka trafi do miejsca z tłokiem C_j(a_j) > θ | φ_j^A(b) ← φ_j^A(b) + Δφ · C_j(a_j) |
 
 Razem: φ_j(b) = φ_j^E(b) + φ_j^A(b). Część od mrówek paruje po każdej iteracji: φ^A ← (1 − ρ_φ) · φ^A. Część od zdarzenia nie paruje, dopóki zdarzenie trwa, a po jego końcu maleje razem z E_j(t).
+
+Model zna każde zdarzenie także bez antyferomonu: zamknięte miejsce jest poza zbiorem dozwolonych miejsc, utrudnienie zwiększa t_ij(t), a skok tłoku zmniejsza zysk w heurystyce η. Antyferomon to dodatkowy, szybki sygnał dla kolonii i pamięć widoczna na mapie. Wiersze dla zamknięcia i utrudnienia dodano w PoC (parametr `phi_event_types`). Wyniki porównania są w eksperymencie E13b (`results/SUMMARY.md`).
 
 Heurystyka η już karze tłok. Antyferomon dodaje pamięć kolonii o złych parach (miejsce, godzina). Ta pamięć jest widoczna na mapie jako kolor miejsca.
 

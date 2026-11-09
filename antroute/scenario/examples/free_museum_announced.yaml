@@ -1,0 +1,10 @@
+# The same free entry, but announced at 11:00 (t_a > T_0 -> replanning, docs 4.5).
+name: free_museum_announced
+day_type: weekday
+events:
+  - type: crowd_surge
+    venue: "@top:Art Museum"
+    window: ["10:00", "13:00"]
+    strength: 1.0
+    decay_min: 60
+    announced: "11:00"

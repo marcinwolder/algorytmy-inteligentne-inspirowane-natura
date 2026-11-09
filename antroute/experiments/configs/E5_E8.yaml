@@ -1,0 +1,38 @@
+# E5-E8 - start hour, preferences, start point, data stability (priority S)
+day_type: weekday
+E5:
+  n: 100
+  start_point: times_square
+  t0: ["06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00",
+       "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"]
+  budget: 240
+  persona: balanced
+  seeds: 30
+  method: acs_ls
+E6:
+  n: 100
+  start_point: times_square
+  t0: "08:00"
+  budget: 480
+  personas: [balanced, culture, foodie, night_owl]
+  random_personas: 100
+  seeds_named: 30
+  seeds_random: 5
+  method: acs_ls
+E7:
+  n: 100
+  start_points: [times_square, union_square, wall_street, met_museum]
+  t0: "08:00"
+  budget: 480
+  persona: culture
+  seeds: 30
+  method: acs_ls
+E8:
+  n: 100
+  start_point: times_square
+  t0: "08:00"
+  budget: 480
+  persona: culture
+  bootstrap: 20
+  seeds: 10
+  method: acs_ls

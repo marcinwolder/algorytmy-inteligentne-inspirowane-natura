@@ -1,0 +1,13 @@
+# E1 - quality of all methods, no events (docs 8.3). E3 and E9 are computed from these runs.
+exp: E1
+grid:
+  start_point: [times_square, union_square, wall_street, met_museum]
+  t0: ["08:00", "12:00", "16:00"]
+  budget: [240, 480, 720]
+  n: [25, 50, 100]
+persona: culture
+day_type: weekday
+seeds: 30
+methods: [random, greedy, acs_a, acs_b, acs_ls, acs_ls+nophi, acs_ls+static]
+deterministic: [greedy]
+cpsat: {n: [25], time_limit: 120, workers: 9}

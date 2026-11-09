@@ -1,0 +1,15 @@
+# E2 - convergence: best profit per iteration (also D1: tau0 formula from the docs)
+exp: E2
+instances:
+  - {n: 100, start_point: times_square, t0: "08:00", budget: 480}
+  - {n: 100, start_point: wall_street, t0: "12:00", budget: 720}
+  - {n: 50, start_point: union_square, t0: "08:00", budget: 480}
+persona: culture
+day_type: weekday
+seeds: 30
+iterations: 3000
+methods:
+  acs_a: {variant: acs_a}
+  acs_a_tau0doc: {variant: acs_a, override: {tau0_mode: doc}}
+  acs_b: {variant: acs_b}
+  acs_ls: {variant: acs_ls}

@@ -1,0 +1,18 @@
+# All event types together (docs 5.3 example).
+name: all_events
+day_type: weekday
+events:
+  - type: crowd_surge
+    venue: "@top:Art Museum"
+    window: ["10:00", "13:00"]
+    strength: 1.0
+    decay_min: 60
+    announced: "11:00"
+  - type: closure
+    venue: "@top:Coffee Shop"
+    window: ["08:00", "12:00"]
+  - type: traffic
+    center: [40.7536, -73.9832]
+    radius_m: 400
+    window: ["12:00", "15:00"]
+    factor: 2.0

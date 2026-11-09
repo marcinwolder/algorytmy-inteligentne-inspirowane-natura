@@ -28,5 +28,6 @@ AntRoute planuje jednodniową trasę po Manhattanie (Nowy Jork), która omija t�
 8. [Plan eksperymentów](08-eksperymenty.md)
 9. [Ograniczenia i ryzyka](09-ograniczenia-i-ryzyka.md)
 10. [Źródła](10-zrodla.md)
+11. [Zakres prac - wersja v1 (PoC)](11-zakres-prac-v1.md)
 
 Dane pomocnicze: [`data/hourly_checkins_nyc.csv`](data/hourly_checkins_nyc.csv) — liczba check-inów w każdej godzinie dla 11 kategorii miejsc.
